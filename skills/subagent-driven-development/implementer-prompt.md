@@ -25,6 +25,7 @@ Task tool (general-purpose):
     superpowers:rails-view-conventions
     superpowers:rails-policy-conventions
     superpowers:rails-job-conventions
+    superpowers:rails-service-conventions
     superpowers:rails-migration-conventions
     superpowers:rails-stimulus-conventions
     superpowers:rails-testing-conventions

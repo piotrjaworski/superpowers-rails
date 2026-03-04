@@ -122,7 +122,7 @@ if [[ "$file_path" == */app/components/*.rb ]] && [[ "$file_path" != *_controlle
 fi
 
 # Check if this is a Stimulus controller file
-if [[ "$file_path" == */app/components/*_controller.js ]] || [[ "$file_path" == */app/packs/controllers/*_controller.js ]]; then
+if [[ "$file_path" == */app/javascript/*_controller.js ]] || [[ "$file_path" == */app/packs/controllers/*_controller.js ]]; then
   if skill_loaded "superpowers:rails-stimulus-conventions"; then
     allow_with_skill "superpowers:rails-stimulus-conventions" "Stimulus controller"
   else
@@ -142,11 +142,21 @@ if [[ "$file_path" == */app/policies/*.rb ]]; then
 fi
 
 # Check if this is a Rails job file
-if [[ "$file_path" == */app/jobs/*.rb ]]; then
+if [[ "$file_path" == */app/workers/*.rb ]]; then
   if skill_loaded "superpowers:rails-job-conventions"; then
     allow_with_skill "superpowers:rails-job-conventions" "job"
   else
     deny_without_skill "superpowers:rails-job-conventions" "job"
+  fi
+  exit 0
+fi
+
+# Check if this is a Rails service file
+if [[ "$file_path" == */app/services/*.rb ]]; then
+  if skill_loaded "superpowers:rails-service-conventions"; then
+    allow_with_skill "superpowers:rails-service-conventions" "service"
+  else
+    deny_without_skill "superpowers:rails-service-conventions" "service"
   fi
   exit 0
 fi

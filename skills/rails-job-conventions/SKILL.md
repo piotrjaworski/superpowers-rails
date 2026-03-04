@@ -11,8 +11,7 @@ Jobs are thin dispatchers. They find a record and call a method on it — nothin
 
 1. **Idempotent** - Jobs MUST be safe to run multiple times. Sidekiq retries
 2. **Thin** - Jobs orchestrate, they don't implement. Delegate to models
-3. **ApplicationJob** - Always inherit from ApplicationJob, not Sidekiq::Job
-4. **Let errors raise** - Don't use `discard_on`. Fix root causes
+3. **Let errors raise** - Don't use `discard_on`. Fix root causes
 
 ## Idempotency
 
@@ -60,7 +59,6 @@ end
 | Do | Don't |
 |----|-------|
 | Design for multiple runs | Assume single execution |
-| `< ApplicationJob` | `include Sidekiq::Job` |
 | Delegate to models | Business logic in jobs |
 | Pass IDs as arguments | Pass serialized objects |
 | Let errors raise | `discard_on` to hide failures |

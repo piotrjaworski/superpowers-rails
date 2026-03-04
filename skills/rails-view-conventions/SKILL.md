@@ -1,28 +1,28 @@
 ---
 name: rails-view-conventions
-description: Use when creating or modifying Rails views, partials, or ViewComponents in app/views or app/components, including Turbo frames and form templates
+description: Use when creating or modifying Rails views, partials, or Presenters in app/views or app/presenters, including Turbo frames and form templates
 ---
 
 # Rails View Conventions
 
-Views are dumb templates. Presentation logic lives in ViewComponents, domain logic lives in models.
+Views are dumb templates. Presentation logic lives in Presenters, domain logic lives in models.
 
 ## Core Principles
 
 1. **Hotwire/Turbo** - Turbo frames for dynamic updates, never JSON APIs
-2. **ViewComponents for logic** - All presentation logic in components, NOT helpers
-3. **No custom helpers** - `app/helpers/` is prohibited. Use ViewComponents instead
-4. **Dumb views** - No complex logic in ERB. Delegate to models or components
+2. **Presenters for logic** - Complex presentation logic in presenters, NOT helpers
+3. **No custom helpers** - Do not use helperps (`app/helpers/`). Use Presenters instead
+4. **Dumb views** - No complex logic in ERB. Delegate to models or presenters
 5. **Stimulus for JS** - All JavaScript through Stimulus controllers
 6. **Don't duplicate model logic** - Delegate to model methods, don't reimplement
 
-## ViewComponents
+## Presenters
 
 **Why?** Testability. Logic in views cannot be unit tested.
 
 Use for: formatting, conditional rendering, computed display values — anything that would go in a helper.
 
-**Models vs ViewComponents:** Models answer domain questions ("what is the deadline?"). ViewComponents answer presentation questions ("how do we display it?" — colors, icons, formatting).
+**Models vs Presenters:** Models answer domain questions ("what is the deadline?"). Presenters answer presentation questions ("how do we display it?" — colors, icons, formatting).
 
 ## Message Passing
 
@@ -51,15 +51,15 @@ Ask models, don't reach into their internals (see `rails-model-conventions` for 
 | Turbo frames for updates | JSON API calls |
 | Stimulus for JS behavior | Inline JavaScript |
 | Partials for simple markup | Duplicated markup |
-| ViewComponents for logic | Custom helpers |
+| Presenters for logic | Custom helpers |
 
 ## Common Mistakes
 
-1. **Logic in views** - Move to ViewComponents for testability
-2. **Creating custom helpers** - Use ViewComponents instead
+1. **Logic in views** - Move to Presenters for testability
+2. **Creating custom helpers** - Use Presenters instead
 3. **Reaching into associations** - Use model methods
 4. **Inline JavaScript** - Use Stimulus controllers
 5. **JSON API calls** - Use Turbo frames/streams
 6. **Duplicating model logic** - Delegate to model methods, don't reimplement
 
-**Remember:** Views render. ViewComponents present. Models decide.
+**Remember:** Views render. Presenters present. Models decide.

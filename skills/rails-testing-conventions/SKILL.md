@@ -23,7 +23,7 @@ Tests verify behavior, not implementation. Real data, real objects, pristine out
 | System | `spec/system/` | Multi-step flows. Use `have_text`, never `sleep` |
 | Model | `spec/models/` | Public interface + Shoulda matchers |
 | Policy | `spec/policies/` | ALL authorization tests belong here |
-| Component | `spec/components/` | ViewComponent rendering |
+| Services | `spec/services/` | Service objects tests |
 
 ## Factory Rules
 
